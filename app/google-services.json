@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "383652201706",
+    "project_id": "triviaeitan",
+    "storage_bucket": "triviaeitan.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:383652201706:android:54b0f605608dcf5c2c8393",
+        "android_client_info": {
+          "package_name": "com.example.triviaeitan"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDxpCeXDEDq8ZWQ8l7BtEkcYJzSUl_ZGr0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
