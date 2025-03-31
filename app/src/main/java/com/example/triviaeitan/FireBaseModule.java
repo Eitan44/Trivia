@@ -13,14 +13,14 @@ import com.google.firebase.database.ValueEventListener;
 public class FireBaseModule {
     private Context context;
 
-
+    //קשור לצבע רקע
     public FireBaseModule(Context context) {
         this.context = context;//הפנייה ל-main activity
 
-        FirebaseDatabase database = FirebaseDatabase.getInstance();
-        DatabaseReference reference = database.getReference("color");
+        FirebaseDatabase database = FirebaseDatabase.getInstance(); // יוצרת אובייקט FirebaseDatabase שמייצג את חיבור למסד הנתונים של Firebase
+        DatabaseReference reference = database.getReference("color");//וצרת אובייקט מסוג DatabaseReference שמייצג את הפנייה למסלול בתוך מסד הנתונים של Firebase. המסלול במקרה הזה הוא "color"
 
-        reference.addValueEventListener(
+        reference.addValueEventListener( //מנגנון שמיעה
                 new ValueEventListener() {
                     @Override
                     public void onDataChange(@NonNull DataSnapshot snapshot) {
@@ -42,7 +42,7 @@ public class FireBaseModule {
 
     public void writeBackgroundColorToFb(String color){
         FirebaseDatabase database = FirebaseDatabase.getInstance();
-        DatabaseReference reference = database.getReference("color");
+        DatabaseReference reference = database.getReference("color"); //בצעת הפנייה (reference) למפתח בשם "color" במסד הנתונים של Firebase.
         reference.setValue(color);
     }
 }

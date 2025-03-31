@@ -11,8 +11,8 @@ public class CustomDialog extends Dialog implements View.OnClickListener {
     Button btnYes, btnNo;
     Context context;
 
-    public CustomDialog(@NonNull Context context) {
-        super(context);
+    public CustomDialog(@NonNull Context context) { // context- מתקשר עם האקטיביטיז (אינטרקציה)
+        super(context); //Context מועבר לדיאלוג
 
         setContentView(R.layout.custom_dialog);
         this.context = context;
@@ -30,12 +30,12 @@ public class CustomDialog extends Dialog implements View.OnClickListener {
         if(btnYes == view)
         {
             dismiss(); // eliminate the dialog
-            ((GameActivity2)context).reset();
+            ((GameActivity2)context).reset();   // קריאה לפונקציה reset() של הפעילות GameActivity2
         }
 
         if(btnNo == view)
         {
-            ((GameActivity2)context).finish();
+            ((GameActivity2)context).finish(); // סיום הפעילות
         }
     }
 }

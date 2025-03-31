@@ -2,10 +2,16 @@ package com.example.triviaeitan;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.LinearLayout;
 import android.widget.TextView;
+
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 public class GameActivity2 extends AppCompatActivity implements View.OnClickListener {
     private Button btna1, btna2, btna3, btna4;
@@ -14,34 +20,63 @@ public class GameActivity2 extends AppCompatActivity implements View.OnClickList
     private Collection collection;
 private Question currentQuestion;
 private int pointz=0;
+    private LinearLayout ll;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_game2);
-        collection = new Collection();
-        tvQuestion = findViewById(R.id.tvQuestion);
-        btna1 = findViewById(R.id.btna1);
-        btna2 = findViewById(R.id.btna2);
-        btna3 = findViewById(R.id.btna3);
-        btna4 = findViewById(R.id.btna4);
 
-        btna1.setOnClickListener(this);
-        btna2.setOnClickListener(this);
-        btna3.setOnClickListener(this);
-        btna4.setOnClickListener(this);
 
-        tvPoint = findViewById(R.id.tvPoints);
-        tvQuestionNumber = findViewById(R.id.tvQuestionNumber);
-        tvGameOver = findViewById(R.id.tvGameOver);
+            super.onCreate(savedInstanceState);
+            setContentView(R.layout.activity_game2);
 
-        tvGameOver.setVisibility(View.INVISIBLE);
+            // Get the layout
+        View layout = findViewById(R.id.activity_game2); // Correct layout ID
 
-        collection.initQuestion();
+            // Get the color from the Intent
+            String color = getIntent().getStringExtra("backgroundColor");
 
-        nextQuestion();
+            // Apply the background color
+            if (color != null) {
+                setBackGroundColor(layout, color);
+            }
+
+            // The rest of your existing code
+            collection = new Collection();
+            tvQuestion = findViewById(R.id.tvQuestion);
+            btna1 = findViewById(R.id.btna1);
+            btna2 = findViewById(R.id.btna2);
+            btna3 = findViewById(R.id.btna3);
+            btna4 = findViewById(R.id.btna4);
+        Intent intent = getIntent();
+        String bgcolor = intent.getStringExtra("colorgame");
+        if (bgcolor != null)
+        {
+            setBackGroundColor2(bgcolor);
+        }
+
+            btna1.setOnClickListener(this);
+            btna2.setOnClickListener(this);
+            btna3.setOnClickListener(this);
+            btna4.setOnClickListener(this);
+
+            tvPoint = findViewById(R.id.tvPoints);
+            tvQuestionNumber = findViewById(R.id.tvQuestionNumber);
+            tvGameOver = findViewById(R.id.tvGameOver);
+
+            tvGameOver.setVisibility(View.INVISIBLE);
+
+            collection.initQuestion();
+            nextQuestion();
+        }
+
+    private void setBackGroundColor(View layout, String color) {
+
     }
+
+
+
+
 
     private void nextQuestion() {
         if (collection.isNotLastQuestion()) {
@@ -98,6 +133,24 @@ private int pointz=0;
         nextQuestion();
 
 
+    }
+    public void setBackGroundColor2(String backGroundColor2) {
+        switch (backGroundColor2) {
+            case "Red": {
+                ll.setBackgroundColor(Color.RED);
+                break;
+            }
+            case "Blue": {
+                ll.setBackgroundColor(Color.BLUE);
+                break;
+            }
+            case "Green": {
+                ll.setBackgroundColor(Color.argb(255, 0, 200, 0));
+                break;
+            }
+            default:
+                ll.setBackgroundColor(Color.WHITE);
+        }
     }
 
     public void reset() {

@@ -24,6 +24,7 @@ private ActivityResultLauncher<Intent> launcher;
     private  FireBaseModule fbModule;
     private String backColor="";
     private ConstraintLayout ll;
+
     @SuppressLint("MissingInflatedId")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -57,6 +58,7 @@ private ActivityResultLauncher<Intent> launcher;
 
     public void onStartGame(View view) {
         Intent intent = new Intent(this, GameActivity2.class);
+        intent.putExtra("backgroundColor", backColor); // Pass the background color
         startActivity(intent);
     }
 

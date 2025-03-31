@@ -2,6 +2,7 @@ package com.example.triviaeitan;
 
 import java.lang.reflect.Array;
 import java.util.ArrayList;
+import java.util.Random;
 
 public class Collection {
     private ArrayList<Question> arr;
@@ -36,4 +37,7 @@ public class Collection {
     public int getIndex(){
         return index;
     }
+
+
+
 }
